@@ -1,12 +1,16 @@
-import React from "react";
+import React from 'react';
 
-const Book = () => {
-  return (
-    <div className="book">
-      <h2>First Book</h2>
-      <button type="button" className="remove-btn">Remove</button>
-    </div>
-  )
-}
+const Book = () => (
+  <div className="book">
+    <ul>
+      <li>
+        First Book
+        <button type="button" className="remove-btn">
+          Remove
+        </button>
+      </li>
+    </ul>
+  </div>
+);
 
-export default Book
+export default Book;

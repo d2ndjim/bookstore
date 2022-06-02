@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
-const Form = () => {
-  return (
-    <Form>
-      <input type="text" placeholder="Title" />
-      <input type="text" placeholder="Author" />
-      <Button type="button" className="add-btn">Add Book</Button>
-    </Form>
-  );
-}
+const Form = () => (
+  <form className="book-form">
+    <input type="text" placeholder="Title" />
+    <input type="text" placeholder="Author" />
+    <button type="button" className="add-btn">Add Book</button>
+  </form>
+);
+
+export default Form;
