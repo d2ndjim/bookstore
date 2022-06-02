@@ -1,0 +1,25 @@
+ul {
+  list-style: none;
+}
+
+ul li {
+  display: flex;
+  gap: 30px;
+  font-size: 20px;
+}
+
+.remove-btn {
+  border: 1px solid black;
+  outline: none;
+  background: white;
+  cursor: pointer;
+}
+
+.book-form {
+  display: flex;
+  gap: 10px;
+}
+
+input {
+  padding: 10px;
+}
