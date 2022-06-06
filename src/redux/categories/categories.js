@@ -1,27 +1,17 @@
-export const addBook = (book) => {
+export const checkStatus = () => {
   return {
-    type: 'books/addBook',
-    payload: book
+    type: 'categories/checkStatus'
   }
 }
 
-export const removeBook = (book) => {
-  return {
-    type: 'books/removeBook',
-    payload: book
-  }
-}
-
-const initialState = [];
-const booksReducer = (books = initialState, action) => {
+const initialState = []
+const categoriesReducer = (categories = initialState, action) => {
   switch(action.type) {
-    case 'books/addBook':
-      return [...books, action.payload]
-    case 'books/removeBook':
-      return books.filter(book => book.id !== action.payload.id)
+    case 'categories/checkStatus':
+      return 'Under Construction'
     default:
-      return books
+      return categories
   }
 }
 
-export default booksReducer
+export default categoriesReducer
