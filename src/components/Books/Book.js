@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectBooks, removeBook } from '../../redux/books/books';
 
@@ -6,12 +6,13 @@ const Book = () => {
   const books = useSelector(selectBooks);
   const dispatch = useDispatch;
 
-  const handleRemove = ({ book }) => {
-    dispatch(removeBook(book));
+  const handleRemove = (id, e) => {
+    e.preventDefault();
+    dispatch(removeBook(id));
   };
 
-  useEffect(() => {
-  }, []);
+  // useEffect(() => {
+  // }, []);
 
   return (
     <div className="book">
@@ -21,7 +22,7 @@ const Book = () => {
             <p>{book.category}</p>
             <p>{book.title}</p>
             <p>{book.author}</p>
-            <button type="button" onClick={handleRemove(book.id)}>Remove Book</button>
+            <button type="button" onClick={(e) => handleRemove(book.id, e)}>Remove Book</button>
           </li>
         ))}
       </ul>
