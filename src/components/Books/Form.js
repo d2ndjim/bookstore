@@ -46,6 +46,7 @@ const Form = () => {
         name="title"
         value={title}
         onChange={handleChange}
+        required
       />
       <input
         type="text"
@@ -53,6 +54,7 @@ const Form = () => {
         name="author"
         value={author}
         onChange={handleChange}
+        required
       />
       <input
         type="text"
@@ -60,6 +62,7 @@ const Form = () => {
         name="category"
         value={category}
         onChange={handleChange}
+        required
       />
       <input type="submit" value="Add Book" className="add-btn" />
 
