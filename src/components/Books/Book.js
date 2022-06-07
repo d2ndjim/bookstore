@@ -1,16 +1,20 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectBooks } from '../../redux/books/books'
 
-const Book = () => (
-  <div className="book">
+const Book = () => {
+  const books = useSelector(selectBooks);
+  return (
+    <div className="book">
     <ul>
-      <li>
-        First Book
-        <button type="button" className="remove-btn">
-          Remove
-        </button>
-      </li>
+      {books.map((book) => (
+        
+      ))}
     </ul>
   </div>
-);
+  )
+  
+}
+  
 
 export default Book;
