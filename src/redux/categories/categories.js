@@ -12,5 +12,4 @@ const categoriesReducer = (categories = initialState, action) => {
   }
 };
 
-export const selectCategories = (state) => state.categories;
 export default categoriesReducer;
