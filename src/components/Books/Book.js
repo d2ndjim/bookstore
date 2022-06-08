@@ -6,8 +6,8 @@ const Book = () => {
   const books = useSelector(selectBooks);
   const dispatch = useDispatch();
 
-  const handleClick = (book) => {
-    dispatch(removeBook(book));
+  const handleClick = (id) => {
+    dispatch(removeBook(id));
   };
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const Book = () => {
             <p>{book.category}</p>
             <p>{book.title}</p>
             <p>{book.author}</p>
-            <button type="button" onClick={() => handleClick(book)}>
+            <button type="button" onClick={() => handleClick(book.id)}>
               Remove Book
             </button>
           </li>
