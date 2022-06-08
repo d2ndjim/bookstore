@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectBooks, removeBook } from '../../redux/books/books';
 
@@ -9,9 +9,6 @@ const Book = () => {
   const handleClick = (id) => {
     dispatch(removeBook(id));
   };
-
-  useEffect(() => {
-  }, []);
 
   return (
     <div className="book">

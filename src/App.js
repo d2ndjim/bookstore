@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import Category from './components/Categories/Category';
 import Books from './components/Books/Books';
 import Header from './components/Header/Header';
+import { fetchBooks } from './redux/books/books';
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchBooks());
+  }, [dispatch]);
   return (
     <div className="App">
       <Header />

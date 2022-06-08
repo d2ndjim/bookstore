@@ -1,39 +1,63 @@
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
-import { createSlice } from '@reduxjs/toolkit';
+
+const ID = 'n1gbT2BFcltlk3jMm4b7';
+const URL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps';
+
+export const fetchBooks = createAsyncThunk(
+  'books/fetchBooks', async () => {
+    const res = await fetch(`${URL}/${ID}/books`);
+    const books = await res.json();
+    const bookObj = [Object.keys(books).map((key) => (
+      {
+        id: key,
+        ...books[key][0],
+      }
+    ))];
+    return bookObj;
+  },
+);
+
+export const addBook = createAsyncThunk(
+  'books/addBook', async ({ title, author, category }, thunkAPI) => {
+    await fetch(`${URL}/${ID}/books`, {
+      method: 'POST',
+      body: JSON.stringify({
+        item_id: uuidv4(),
+        title,
+        author,
+        category,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then(() => thunkAPI.dispatch(fetchBooks()));
+    const { books } = thunkAPI.getState().books;
+    return books;
+  },
+);
+
+export const removeBook = createAsyncThunk(
+  'books/removeBook', async (bookId, thunkAPI) => {
+    await fetch(`${URL}/${ID}/books/${bookId}`, {
+      method: 'DELETE',
+    }).then(() => thunkAPI.dispatch(fetchBooks()));
+    const { books } = thunkAPI.getState().books;
+    return books;
+  },
+);
 
 const options = {
   name: 'books',
-  initialState: [
-    {
-      id: uuidv4(),
-      author: 'Peter Jefferson',
-      title: '12 Goals for life',
-      category: 'Category1',
-    },
-    {
-      id: uuidv4(),
-      author: 'Mark Manson',
-      title: 'Subtle art of not giving a fuck',
-      category: 'Category2',
-    },
-    {
-      id: uuidv4(),
-      author: 'Napoleon Hill',
-      title: 'Think and grow rich',
-      category: 'Category3',
-    },
-  ],
-  reducers: {
-    addBook: (state, action) => {
-      state.push(action.payload);
-    },
-    removeBook: (state, action) => {
-      state.filter((book) => book.id !== action.payload);
-    },
+  initialState: [],
+  reducers: {},
+  extraReducers: {
+    [fetchBooks.fulfilled]: (state, action) => action.payload[0],
+    [addBook.fulfilled]: (state, action) => action.payload,
+    [removeBook.fulfilled]: (state, action) => action.payload,
   },
 };
 
 const booksSlice = createSlice(options);
-export const { addBook, removeBook } = booksSlice.actions;
 export const selectBooks = (state) => state.books;
 export default booksSlice.reducer;
