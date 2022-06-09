@@ -4,7 +4,7 @@ const options = {
   name: 'categories',
   initialState: [],
   reducers: {
-    checkStatus: () => ('Under Construction'),
+    checkStatus: () => ('Page Under Construction'),
   },
 };
 const categoriesSlice = createSlice(options);
