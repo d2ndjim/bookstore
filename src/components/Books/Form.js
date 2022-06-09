@@ -31,34 +31,42 @@ const Form = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="book-form">
-      <input
-        type="text"
-        placeholder="Title"
-        name="title"
-        value={title}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="text"
-        placeholder="Author"
-        name="author"
-        value={author}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="text"
-        placeholder="Category"
-        name="category"
-        value={category}
-        onChange={handleChange}
-        required
-      />
-      <input type="submit" value="Add Book" className="add-btn" />
-
-    </form>
+    <section>
+      <div className="horizontal-divider" />
+      <h2 className="form-title">ADD NEW BOOK</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          className="input"
+          name="title"
+          placeholder="Title"
+          value={title}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          className="input"
+          name="author"
+          placeholder="Author"
+          value={author}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          className="input"
+          name="category"
+          placeholder="Category"
+          value={category}
+          onChange={handleChange}
+          required
+        />
+        <button type="submit" className="primary-button-big">
+          ADD BOOK
+        </button>
+      </form>
+    </section>
   );
 };
 

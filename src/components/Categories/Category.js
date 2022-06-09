@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import './Category.css';
 import { selectCategories, checkStatus } from '../../redux/categories/categories';
 
 const Category = () => {
@@ -11,11 +10,15 @@ const Category = () => {
     dispatch(checkStatus());
   };
   return (
-    <div>
-      <button className="category-btn" type="button" onClick={handleClick}>
-        Check Status
+    <div className="categories">
+      <button
+        className="primary-button"
+        type="button"
+        onClick={handleClick}
+      >
+        CHECK STATUS
       </button>
-      <h1>{Status}</h1>
+      <p>{Status}</p>
     </div>
   );
 };
