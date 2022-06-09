@@ -4,9 +4,9 @@
 > This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 
-### To see deployed live version, Click links below
+### To see deployed live version, Click link below
 
-### [Netlify]()
+### [Netlify](https://d2ndjim-bookstore.netlify.app/)
 
 
 
